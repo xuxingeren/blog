@@ -2,8 +2,283 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title></title>
+		<title>垂直居中-文本篇</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#mytext .right{
+				width: 50%;
+				height: 400px;
+				background-color: #999;
+				display: inline-block;
+				color: #FFF;		
+				vertical-align: top;		
+			}
+			#mytext .left{
+				width:50%;
+				height: 400px;
+				display: inline-block;	
+				vertical-align: top;			
+			}
+			ul{
+				list-style: none;
+			}
+			#mytext li{
+				border-bottom: 1px solid #CCC;
+				padding: 20px;
+				box-sizing: border-box;
+				font-size: 0;
+			}
+			#mytext li:after{
+				clear: both;
+				content: '.';
+				height: 0px;
+				display: block;
+				visibility: hidden;						
+			}
+			#mytext .title{
+				font-size: 16px;
+				line-height: 30px;
+				font-weight: bold;
+			}
+			#mytext .box{
+				width: 100px;
+				height: 100px;
+				background-color: white;
+				color: black;
+				font-size: 14px;
+			}
+			#mytext .pox{
+				color: #FFF;
+				font-size: 14px;
+			}
+			#mytext pre{
+				font-size: 14px;
+			}
+			#mytext .text1{				
+				position: relative;
+				height: 100%;				
+			}
+			#mytext .pox1{
+				line-height: 30px;
+				position: absolute;
+				top: 50%;				
+				margin-top: -30px;
+				overflow: hidden;		
+				height: 60px;
+			}
+			#mytext .text2{
+				display: table-cell;	
+				vertical-align: middle;		
+				height: 400px;
+			}
+			#mytext .pox2{
+				display: inline-block;				
+			}
+			#mytext .text3{
+				display: table;					
+				height: 400px;
+			}
+			#mytext .pox3{
+				display: table-cell;	
+				vertical-align: middle;		
+			}
+			#mytext .text4{
+				line-height:400px;	
+			}
+		    #mytext .text5{												
+ 				  height: 100%; 				 
+			}
+			#mytext .text5:after{
+				 content:'';
+				  width:0;
+				  height:100%;
+				  display:inline-block;
+				  vertical-align:middle;
+			}	
+			#mytext .pox5{			
+				 vertical-align:middle;
+				  display:inline-block;				 				 
+			}
+			#mytext .text6{												
+ 				display: flex;
+ 				display: -webkit-flex;	
+ 				height: 100%;					 
+			}
+			#mytext .pox6{
+				margin: auto;
+			}		
+			#mytext .text7{
+				display: -webkit-box;			  
+			    -webkit-box-align:center;				 
+			    height: 100%;
+			}							
+		</style>
 	</head>
 	<body>
+		<h2>垂直居中-文本篇</h2>
+		<ul id="mytext">
+			<li>
+				<div class="left">
+					<p class="title">1.知道高度absolute</p>
+					<pre>
+父标签用相对定位		
+.text1{
+	position: relative;
+}
+
+子标签用绝对定位，然后top:50%;margin-top:负的高度的一半，
+ok，垂直居中达成
+.pox1{
+	line-height: 30px;
+	position: absolute;
+	top: 50%;				
+	margin-top: -30px;
+}						
+					</pre>
+				</div>
+				<div class="right">
+					<div class="text1">
+						<p class="pox pox1">我是pox1我是pox1我是pox1我是pox1我是pox1我是pox1我是pox1我是pox1我是pox1我是pox1我是pox1我是pox1我是pox1我是pox1我是pox1我是pox1我是pox1我是pox1我是pox1我是pox1</p>
+					</div>					
+				</div>
+			</li>
+					<li>
+				<div class="left">
+					<p class="title">2.不知道高度table-cell</p>
+					<pre>
+父标签	
+.text2{
+	display: table-cell;	
+	vertical-align: middle;		
+	height: 400px;  //(要高度)
+}
+
+子标签
+.pox2{
+	display: inline-block;
+}					
+					</pre>
+				</div>
+				<div class="right">
+					<div class="text2">
+						<span class="pox pox2">我是pox2我是pox2我是pox2我是pox2我是pox2我是pox2我是pox2我是pox2我是pox2我是pox2我是pox2我是pox2我是pox2我是pox2我是pox2我是pox2我是pox2我是pox2</span>
+					</div>					
+				</div>
+			</li>	
+			<li>
+				<div class="left">
+					<p class="title">3.不知道高度table</p>
+					<pre>
+父标签	
+.text3{
+	display: table;	
+	height: 400px;  //(要高度)	
+}
+
+子标签
+.pox3{
+	display: table-cell;
+	vertical-align: middle;	
+}					
+					</pre>
+				</div>
+				<div class="right">
+					<div class="text3">
+						<span class="pox pox3">我是pox3我是pox3我是pox3我是pox3我是pox3我是pox3我是pox3我是pox3我是pox3我是pox3我是pox3我是pox3我是pox3我是pox3我是pox3我是pox3我是pox3我是pox3我是pox3我是pox3我是pox3我是pox3我是pox3我是pox3我是pox3我是pox3我是pox3我是pox3</span>
+					</div>					
+				</div>
+			</li>	
+			<li>
+				<div class="left">
+					<p class="title">4.单行文本</p>
+					<pre>
+父标签行高=父标签行高度，ok了;	
+.text4{
+	line-height:400px;	
+	height: 400px;  
+}				
+					</pre>
+				</div>
+				<div class="right">
+					<div class="text4">
+						<span class="pox pox4">我是pox4</span>
+					</div>					
+				</div>
+			</li>	
+			<li>
+				<div class="left">
+					<p class="title">5.不知道高度,妙用:after占位居中</p>
+					<pre>
+父标签;		
+ .text5{												
+	  height: 100%;
+}
+.text5:after{
+	 content:'';
+	  width:0;
+	  height:100%;
+	  display:inline-block;
+	  vertical-align:middle;
+}
+
+子标签
+.pox5{			
+	vertical-align:middle;
+	display:inline-block;	  				 
+}	
+					</pre>
+				</div>
+				<div class="right">
+					<div class="text5">
+						<span class="pox pox5">我是pox5我是pox5我是pox5我是pox5我是pox5我是pox5我是pox5我是pox5我是pox5我是pox5我是pox5我是pox5我是pox5我是pox5我是pox5我是pox5我是pox5我是pox5我是pox5我是pox5我是pox5我是pox5我是pox5我是pox5我是pox5我是pox5</span>
+					</div>					
+				</div>
+			</li>
+		<li>
+				<div class="left">
+					<p class="title">6.不知道高度，display:flex</p>
+					<pre>
+父标签;		
+ .text6{	
+ 	dispaly:-webkit-flex;
+	dispaly:flex;
+	height: 100%;	
+}
+			
+子标签
+.pox6{
+	margin: auto;
+}	
+					</pre>
+				</div>
+				<div class="right">
+					<div class="text6">
+						<span class="pox pox6">我是pox6我是pox6我是pox6我是pox6我是pox6我是pox6我是pox6我是pox6我是pox6我是pox6我是pox6我是pox6我是pox6我是pox6我是pox6我是pox6我是pox6我是pox6我是pox6我是pox6</span>
+					</div>					
+				</div>
+			</li>
+			<li>
+				<div class="left">
+					<p class="title">7.不知道高度，display:-webkit-box</p>
+					<pre>
+父标签	
+.text7{
+	display: -webkit-box;			  
+	-webkit-box-align:center;				 
+	height: 100%;
+}	
+					</pre>
+				</div>
+				<div class="right">
+					<div class="text7">
+						<span class="pox pox7">我是pox7我是pox7我是pox7我是pox7我是pox7我是pox7我是pox7我是pox7我是pox7我是pox7我是pox7我是pox7我是pox7我是pox7我是pox7我是pox7我是pox7我是pox7我是pox7我是pox7我是pox7我是pox7我是pox7</span>
+					</div>					
+				</div>
+			</li>
+		</ul>	
+		
 	</body>
 </html>
