@@ -8,7 +8,7 @@
 				margin: 0;
 				padding: 0;
 			}
-			#mytext .right{
+			 .right{
 				width: 50%;
 				height: 400px;
 				background-color: #999;
@@ -16,7 +16,7 @@
 				color: #FFF;		
 				vertical-align: top;		
 			}
-			#mytext .left{
+			 .left{
 				width:50%;
 				height: 400px;
 				display: inline-block;	
@@ -25,43 +25,43 @@
 			ul{
 				list-style: none;
 			}
-			#mytext li{
+			 li{
 				border-bottom: 1px solid #CCC;
 				padding: 20px;
 				box-sizing: border-box;
 				font-size: 0;
 			}
-			#mytext li:after{
+			 li:after{
 				clear: both;
 				content: '.';
 				height: 0px;
 				display: block;
 				visibility: hidden;						
 			}
-			#mytext .title{
+			 .title{
 				font-size: 16px;
 				line-height: 30px;
 				font-weight: bold;
 			}
-			#mytext .box{
+			 .box{
 				width: 100px;
 				height: 100px;
 				background-color: white;
 				color: black;
 				font-size: 14px;
 			}
-			#mytext .pox{
+			 .pox{
 				color: #FFF;
 				font-size: 14px;
 			}
-			#mytext pre{
+			 pre{
 				font-size: 14px;
 			}
-			#mytext .text1{				
+			.text1{				
 				position: relative;
 				height: 100%;				
 			}
-			#mytext .pox1{
+			 .pox1{
 				line-height: 30px;
 				position: absolute;
 				top: 50%;				
@@ -69,51 +69,64 @@
 				overflow: hidden;		
 				height: 60px;
 			}
-			#mytext .text2{
+			 .text2{
 				display: table-cell;	
 				vertical-align: middle;		
 				height: 400px;
 			}
-			#mytext .pox2{
+			 .pox2{
 				display: inline-block;				
 			}
-			#mytext .text3{
+			 .text3{
 				display: table;					
 				height: 400px;
 			}
-			#mytext .pox3{
+			 .pox3{
 				display: table-cell;	
 				vertical-align: middle;		
 			}
-			#mytext .text4{
+			 .text4{
 				line-height:400px;	
 			}
-		    #mytext .text5{												
+		     .text5{												
  				  height: 100%; 				 
 			}
-			#mytext .text5:after{
+			 .text5:after{
 				 content:'';
 				  width:0;
 				  height:100%;
 				  display:inline-block;
 				  vertical-align:middle;
 			}	
-			#mytext .pox5{			
+			 .pox5{			
 				 vertical-align:middle;
 				  display:inline-block;				 				 
 			}
-			#mytext .text6{												
+			 .text6{												
  				display: flex;
  				display: -webkit-flex;	
- 				height: 100%;					 
-			}
-			#mytext .pox6{
-				margin: auto;
-			}		
-			#mytext .text7{
+ 				height: 100%;
+ 				-webkit-align-items: center;
+ 				align-items: center;					 
+			}	
+			.pox6{
+				-webkit-flex: 1;
+				flex: 1;
+			}	
+			.text7{
 				display: -webkit-box;			  
 			    -webkit-box-align:center;				 
 			    height: 100%;
+			}		
+			 .text8{
+				position: relative;
+				height: 100%;
+			}
+			 .pox8{
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				left: 0;
 			}							
 		</style>
 	</head>
@@ -243,15 +256,17 @@ ok，垂直居中达成
 					<pre>
 父标签;		
  .text6{	
- 	dispaly:-webkit-flex;
-	dispaly:flex;
-	height: 100%;	
-}
-			
-子标签
-.pox6{
-	margin: auto;
+ 	display: flex;
+	display: -webkit-flex;	
+	height: 100%;
+	-webkit-align-items: center;
+	align-items: center;
 }	
+子标签
+.pox6{			
+	flex:1;	 
+	-webkit-flex:1;
+}
 					</pre>
 				</div>
 				<div class="right">
@@ -275,6 +290,32 @@ ok，垂直居中达成
 				<div class="right">
 					<div class="text7">
 						<span class="pox pox7">我是pox7我是pox7我是pox7我是pox7我是pox7我是pox7我是pox7我是pox7我是pox7我是pox7我是pox7我是pox7我是pox7我是pox7我是pox7我是pox7我是pox7我是pox7我是pox7我是pox7我是pox7我是pox7我是pox7</span>
+					</div>					
+				</div>
+			</li>
+			
+			<li>
+				<div class="left">
+					<p class="title">8.不知道高度，transform</p>
+					<pre>
+父标签	
+.text8{
+		position: relative;
+		height: 100%;
+	}
+
+字标签
+.pox8{
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	left: 0;
+}		
+					</pre>
+				</div>
+				<div class="right">
+					<div class="text8">
+						<span class="pox pox8">我是pox8我是pox8我是pox8我是pox8我是pox8我是pox8我是pox8我是pox8我是pox8我是pox8我是pox8我是pox8我是pox8我是pox8我是pox8我是pox8我是pox8我是pox8我是pox8我是pox8我是pox8我是pox8我是pox8</span>
 					</div>					
 				</div>
 			</li>
