@@ -1,0 +1,112 @@
+---
+layout: false
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>图片上传</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul{
+				list-style: none;
+			}
+			.upload{
+				margin-top: 20px;
+				text-align: center;
+			}
+			.sub{
+				margin-top: 20px;
+				text-align: center;
+			}
+			.list{
+				margin-top: 15px;
+				padding: 0 10px;
+			}
+			.list li{
+				width: 82px;
+				height: 82px;
+				border-radius: 3px;
+				border:1px solid #DDD;
+				padding: 5px;
+				float: left;
+				margin-right: 10px;
+				position: relative;
+				margin-bottom: 10px;
+			}
+			.list li img{
+				width: 100%;
+				height: 100%;
+			}
+			.close{
+				position: absolute;
+				right: 1px;
+				top: -4px;
+				opacity: 0.8;
+				cursor: pointer;
+			}
+			.progressbox{
+				padding: 0 10px;
+				display: none;
+			}
+			.clearfix:after{
+				content: '';
+				clear:both;
+				display: block;
+				height: 0px;
+				width: 100%;
+			}
+			.hidden{
+				display: none;
+			}
+			.btn{
+				background-color: #FFF;
+				border-radius: 3px;
+				border: 1px solid #DDD;
+				padding: 6px 12px;
+				outline: none;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="upload">
+			<div><button class="btn" onclick="upimg()">点我上传图片(createObjectURL)</button></div>
+			<form  method="post" enctype="multipart/form-data" id="myForm">
+					<div class="upimg">
+						<input type="file" class="hidden"  id="file"  multiple="multiple"/>
+						<ul class="list clearfix"></ul>						
+					</div>
+				</form> 	
+		</div>
+	</body>
+	<script>
+		var myfile = document.getElementById('file');	
+		var List = document.getElementsByClassName('list')[0];
+		var closes = document.getElementsByClassName('close');
+		var filearr = [];
+			function upimg(){					
+				myfile.click();
+			}
+		myfile.onchange = function(){
+			var files = this.files;
+			if(!files)return;		
+			console.log(files);
+			for(var i = 0;i<files.length;i++){				
+					var oLi = '<li><img src="'+URL.createObjectURL(files[i])+'"><span class="close" onclick="closeli(this)" >&times;</span></li>';	
+					List.innerHTML+=oLi;        	
+			}
+		}
+			function closeli(obj){
+				[].slice.call(closes).forEach(function(dom,index){
+					if(obj === closes[index]){
+						filearr.splice(index,1);						
+					};
+				});
+				obj.parentNode.remove();			
+			}
+	</script>
+</html>

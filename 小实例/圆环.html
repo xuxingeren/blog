@@ -48,9 +48,9 @@
   				background-color: red;
   				transition: all 0.4s;
   			}
-  			.left span{				
-  				border-radius:150px 0 0 150px; 	
-  				transform-origin: right;		 				
+  			.left span{
+  				border-radius:150px 0 0 150px;
+  				transform-origin: right;
   			}
   			.right span{
   				border-radius:0 150px 150px 0;
@@ -78,7 +78,7 @@
   				width: 80px;
   				text-align: center;
   				border-left: none;
-  				border-right: none; 			
+  				border-right: none;
   			}
   			.time{
   				width: 600px;
@@ -144,7 +144,8 @@
 				this.Percentage = this.Percentage < 0 ? 0 : this.Percentage;
 				this.set();
 			},
-			set:function(){
+			set:function(Percentage){
+				this.Percentage = Number(Percentage) || this.Percentage;
 				this.lef = this.Percentage > (this.Total/2) ? this.Percentage - (this.Total/2) : 0;
 				this.rig = this.Percentage > (this.Total/2) ? (this.Total/2) : this.Percentage;
 				this.getdom("left").style.transform = "rotateZ("+this.setdeg(this.lef)+"deg)";
@@ -163,9 +164,7 @@
 		var val = document.getElementById("num");
 		val.onchange = function(){
 			val.value = Number(val.value) >100 ? 100 : Number(val.value);
-			rin.init({
-				Percentage:val.value
-			});
+			rin.set(val.value);
 		}
 		function add(){
 			val.value = Number(val.value)+10 >100 ? 100 : Number(val.value)+10;
