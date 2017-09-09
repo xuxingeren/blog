@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>图片上传</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul{
+				list-style: none;
+			}
+			.upload{
+				margin-top: 20px;
+				text-align: center;
+			}
+			.sub{
+				margin-top: 20px;
+				text-align: center;
+			}
+			.list{
+				margin-top: 15px;
+				padding: 0 10px;
+			}
+			.list li{
+				width: 82px;
+				height: 82px;
+				border-radius: 3px;
+				border:1px solid #DDD;
+				padding: 5px;
+				float: left;
+				margin-right: 10px;
+				position: relative;
+				margin-bottom: 10px;
+			}
+			.list li img{
+				width: 100%;
+				height: 100%;
+			}
+			.close{
+				position: absolute;
+				right: 1px;
+				top: -4px;
+				opacity: 0.8;
+				cursor: pointer;
+			}
+			.progressbox{
+				padding: 0 10px;
+				display: none;
+			}
+			.clearfix:after{
+				content: '';
+				clear:both;
+				display: block;
+				height: 0px;
+				width: 100%;
+			}
+			.hidden{
+				display: none;
+			}
+			.btn{
+				background-color: #FFF;
+				border-radius: 3px;
+				border: 1px solid #DDD;
+				padding: 6px 12px;
+				outline: none;
+				cursor: pointer;
+			}
+			.inputbox{
+				margin: 10px 0;
+			}
+			.inputbox input{
+				outline: none;
+				border: 1px solid #DDD;
+				border-radius: 3px;
+				height: 36px;
+				box-sizing: border-box;
+				padding: 0 8px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="upload">
+			<div><button class="btn" onclick="upimg()">点我上传图片</button></div>
+			<form  method="post" enctype="multipart/form-data" id="myForm">
+				    <div class="inputbox"><input type="text" name="inp" id="inp" value="" placeholder="一起form提交的数据"/></div>
+					<div class="upimg">
+						<input type="file" class="hidden"  id="file"  multiple="multiple"/>
+						<ul class="list clearfix"></ul>						
+					</div>
+					<button class="btn" onclick="btn(event)">提交</button>
+			</form> 	
+		</div>
+	</body>
+	<script>
+		var myfile = document.getElementById('file');	
+		var List = document.getElementsByClassName('list')[0];
+		var closes = document.getElementsByClassName('close');
+		var filearr = [];
+			function upimg(){					
+				myfile.click();
+			}
+		myfile.onchange = function(){
+			var files = this.files;
+			if(!files)return;		
+			for(var i = 0;i<files.length;i++){	
+				   filearr.push(files[i]);
+					var oLi = '<li><img src="'+URL.createObjectURL(files[i])+'"><span class="close" onclick="closeli(this)" >&times;</span></li>';	
+					List.innerHTML+=oLi;        	
+			}
+		}
+			function closeli(obj){
+				[].slice.call(closes).forEach(function(dom,index){
+					if(obj === closes[index]){
+						filearr.splice(index,1);						
+					};
+				});
+				parents(obj,'li').remove();			
+			}
+			function parents(obj,node){					
+				if(obj.parentNode.tagName==node.toUpperCase()){
+					return obj.parentNode;
+				}else{
+					return  parents(obj.parentNode,node);					
+				}				
+			}
+			function btn(e){
+				e.preventDefault();
+				 var myform = document.querySelector("form");		
+				var formData = new FormData(myform);				
+				for(var i =0;i<filearr.length;i++){    //提交时，我们把filearr中的数据遍历一遍
+					formData.append("upfile[]", filearr[i]); //用append添加到formData中，就得用户最重要提交的图片了					
+				};
+				formData.append("aaa", 111);	
+				var request = new XMLHttpRequest(); 				
+				request.open("POST", "/code/1.php",true);
+				request.onreadystatechange = function(){					
+					if(request.readyState==4){						
+						
+					}
+				};                          //注意一定不要设置request.setRequestHeader
+				request.send(formData);
+			}
+	</script>
+</html>
