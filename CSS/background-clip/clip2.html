@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+             *{
+                        margin: 0;
+                        padding:0;
+                }
+                body {
+                        font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Noto Sans CJK SC, WenQuanYi Micro Hei, Arial, sans-serif;
+                }
+
+                @keyframes loop {
+                        0% {
+                                background-position: -800px 0;
+                        }
+                        100% {
+                                background-position: -0 0;
+                        }
+                }
+
+                .text {
+                        width: 720px;
+                        height: 78px;
+                        line-height: 78px;
+                        font-size: 40px;
+                        font-weight: bold;
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        background-image: url("http://ouzdb04w7.bkt.clouddn.com/image/2017/10/26/o_bg.jpg");
+                        background-color: red;
+                        background-repeat: no-repeat;
+                        background-position: -800px 0;
+                       animation: loop 10s linear infinite;
+                }
+
+                .text2 {
+                        width: 720px;
+                        background-image: -webkit-linear-gradient(top, #fc0, #f30 50%, #c00 51%, #600);
+                        -webkit-background-clip: text;
+                        font-size: 80px;
+                        -webkit-text-fill-color: transparent;
+                        font-weight: bold;
+                        background-repeat: no-repeat;
+                        background-position: -800px 0;
+                       animation: loop 10s linear infinite;
+                }
+                .text3{
+                        width: 720px;
+                        background-color: black;
+                        -webkit-text-stroke: 1px white;
+                        font-size: 80px;
+                        -webkit-text-fill-color: transparent;
+                        font-weight: bold;
+                }
+        </style>
+</head>
+
+<body>
+        <div class="text">大江东去，浪淘尽</div>
+        <div class="text2">大江东去，浪淘尽</div>
+        <div class="text3">大江东去，浪淘尽</div>
+</body>
+
+</html>

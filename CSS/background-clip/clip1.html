@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+                *{
+                        margin: 0;
+                        padding:0;
+                }
+                html,body {
+                        font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Noto Sans CJK SC, WenQuanYi Micro Hei, Arial, sans-serif;
+                       height: 100%;
+                       width: 100%; 
+                       overflow: hidden;
+                }
+                .box{
+                        background-image: url('http://ouzdb04w7.bkt.clouddn.com/image/2017/10/26/1.jpg');
+                        width:720px;
+                        height: 450px;
+                        background-size: cover;
+                        font-size: 140px;
+                        line-height: 330px;
+                        font-weight: bold;                       
+                        background-clip: border-box;
+                        position: relative;
+                        text-align: center;
+                        border: 20px dotted #000;
+                        padding: 40px;
+                        box-sizing: border-box;
+                }
+                .change{
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        text-align: justify;
+                        width:100%;
+                        background:rgba(0,0,0,0.5);
+                        line-height: 36px;
+                        height: 36px;
+                        padding:0 10px;
+                        box-sizing: border-box;
+                }
+                .change:after{
+                        content: '';
+                        width: 100%;
+                        position: relative;
+                        display: inline-block;		
+                }
+                label{
+                        cursor: pointer;
+                        display:inline-block;
+                        color: #ffffff;
+                }
+                label input{
+                        transform: translateY(2px);
+                }
+        </style>
+</head>
+
+<body>
+        <div class="box">
+             大江东去      
+        </div>
+        <div class="change">
+               <label ><input type="radio" name="clip" checked>border-box</label>
+               <label ><input type="radio"  name="clip">padding-box</label>
+               <label ><input type="radio"  name="clip">content-box</label>
+               <label ><input type="radio"  name="clip">text</label>  
+               <label ><input type="radio"  name="clip">透明</label>            
+        </div>
+</body>
+<script>
+        var oRadio = document.querySelectorAll("label input[name='clip']");
+        var oBox = document.querySelector(".box");
+        [].slice.call(oRadio).forEach(function(element,index) {
+                element.onclick = function(){
+                        oBox.style.webkitTextFillColor= "";
+                        oBox.style.webkitBackgroundClip= '';
+                       if(index == 4 ){     
+                                oBox.style.webkitTextFillColor= "transparent";                          
+                                oBox.style.webkitBackgroundClip= 'text';
+                        }else{                             
+                                oBox.style.backgroundClip = this.parentNode.innerText+''; 
+                                if(index == 3){
+                                        oBox.style.webkitBackgroundClip= 'text';
+                                }                              
+                        };
+                }       
+        });
+</script>
+</html>
