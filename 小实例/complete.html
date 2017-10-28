@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+	   *{
+		   margin: 0;
+		   padding: 0;
+	   }
+	   button{
+		   padding: 8px 12px;
+		   background:#ffffff;
+		   border: 1px solid #dddddd;
+		   border-radius: 3px;
+		   cursor: pointer;
+		   background: #ff3300;
+		   color: #ffffff;
+	   }
+	</style>
+</head>
+<body>
+		<button onclick="loadImage(document.getElementsByTagName('img'),imgLoaded,allimgLoaded)">加载</button>
+		<img data-src="http://ouzdb04w7.bkt.clouddn.com/image/2017/10/27/timg1.jpg" src=""  alt="" class="myimg" />
+		<img data-src="http://ouzdb04w7.bkt.clouddn.com/image/2017/10/27/timg2.jpg" src="" alt="" class="myimg" />
+		<img data-src="http://ouzdb04w7.bkt.clouddn.com/image/2017/10/27/timg3.jpg" src="" alt="" class="myimg"/>		
+		<script>
+			function loadImage(objarr,callback,allcallback){
+				var timer = null;
+				var i = 0;
+				var len = objarr.length;
+				var load;
+				load = function(i){
+					if(i<len){
+						var img = new Image();
+						img.src = objarr[i].getAttribute("data-src");
+						timer = setInterval(function(){
+							if(img.complete){														
+								clearInterval(timer);																										
+								callback(objarr[i++],img);																	
+								load(i);
+							}
+						},80);
+					}else{
+						allcallback();
+					}
+				};
+				load(0);
+			}
+			function imgLoaded(obj,img){
+				obj.src = img.src;
+				console.log(img.width);
+			}
+			function allimgLoaded(){
+				alert("图片全部加载完成");
+			}
+		</script>
+</body>
+</html>
