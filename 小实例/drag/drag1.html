@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+			*{
+				margin: 0;
+				padding: 0;	
+            }
+            html{
+                width: 100%;
+                height: 100%;
+            }
+			body{
+                width: 100%;
+                height: 100%;
+				position: relative;
+
+			}
+			.box{
+				width: 100px;
+				height: 100px;
+				position: absolute;
+				top: 0;
+				left: 0;
+                background: #000;
+                color: #FFF;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box" id="box">我在电脑上可以拖动</div>
+	</body>
+    <script>
+    	touch('box');
+    	function touch(id){
+    		var obj = document.getElementById(id); 
+            obj.onmousedown = function(event){
+                var disX = event.pageX - obj.offsetLeft;
+                var disY = event.pageY - obj.offsetTop;
+                var W = document.documentElement.clientWidth-obj.offsetWidth;
+                var H = document.documentElement.clientHeight-obj.offsetHeight;
+                document.onmousemove = function(event){
+                    event.preventDefault();
+                    var l = event.pageX - disX;
+                    var t = event.pageY - disY;
+                    if(l<0){
+                        l = 0;
+                    }
+                    if(l>W){
+                        l = W ;
+                    }
+                    if(t<0){
+                        t = 0;
+                    }
+                    if(t>H){
+                        t = H;
+                    }
+                    obj.style.top = t+ 'px';
+                    obj.style.left = l+'px';
+                }
+                obj.onmouseup = function(){
+                    document.onmousemove = null;
+                    obj.onmouseup = null;
+                }
+            }
+    };
+    </script>
+</html>

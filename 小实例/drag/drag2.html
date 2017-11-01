@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;	
+			}
+			html{
+                width: 100%;
+                height: 100%;
+            }
+			body{
+                width: 100%;
+                height: 100%;
+				position: relative;
+
+			}
+			.box{
+				width: 100px;
+				height: 100px;
+				position: absolute;
+				top: 0;
+				left: 0;
+                background: #000;
+                color: #FFF;
+			}
+		</style>
+	</head>
+	<body >
+		<div class="box" id="box">我在手机上可以拖动</div>
+	</body>
+    <script>
+    	touch('box');
+    	function touch(id){
+			var obj = document.getElementById(id); 
+			obj.addEventListener('touchstart', function(event) { 
+			// 如果这个元素的位置内只有一个手指的话 
+			if (event.targetTouches.length == 1) { 
+			var touch = event.targetTouches[0]; 
+			// 把元素放在手指所在的位置 
+			var disX=touch.pageX-obj.offsetLeft; 
+			var disY=touch.pageY-obj.offsetTop;
+			var W = document.documentElement.clientWidth-obj.offsetWidth;
+            var H = document.documentElement.clientHeight-obj.offsetHeight;
+			obj.addEventListener('touchmove',move);  
+			function move(event){	
+				event.preventDefault();
+					var touch2=event.targetTouches[0];
+					var l=touch2.pageX-disX;
+					var t=touch2.pageY-disY;
+					if(l<0){
+						l=0;
+					};
+					if(l>W){
+						l=W;
+					};
+					if(t<0){
+						t=0;
+					};
+					if(t>H){
+						t=H;
+					};
+					obj.style.left=l+'px';
+					obj.style.top=t+'px';
+		 
+			};
+		 	 obj.addEventListener('touchend',chend);
+		 	 function chend(event){
+				obj.removeEventListener('touchmove',move);
+				obj.removeEventListener('touchend',chend);
+		 	 };
+		}; 
+		}, false);
+    };
+    </script>
+</html>
