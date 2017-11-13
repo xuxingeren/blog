@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">  
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            font-size: 0;
+            overflow: hidden;
+        }
+        main{
+            position: relative;
+            margin-left: -1px;
+        }
+        h1{
+            font-size: 20px;
+            line-height: 36px;
+            text-align: center;
+        }
+        button{
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            background-color: #FFF;
+            width: 25%;
+            box-sizing: border-box;
+            height: 36px;
+            position: relative;   
+            outline: none;     
+            color: #333;                
+        }
+        button:after{
+            position: absolute;
+            border: 1px solid #DDD;
+            top: 0;
+            left: 0;
+            content: '';
+            transform-origin: left top;
+            width: 100%;
+            height: 100%;
+        }
+        .box{
+            font-size: 20px;
+            margin: 20px;
+            text-align: center;
+        }
+        .box p{
+            color: red;
+            display: block;
+            height: 36px;
+            line-height: 36px;
+        }
+        @media (-webkit-min-device-pixel-ratio: 2),
+        ( min-device-pixel-ratio: 2) {
+            button:after{
+                -webkit-transform: scale(0.5);
+                transform: scale(0.5);
+                width:200%;
+                height: 200%;
+            }
+        }
+
+        @media (-webkit-min-device-pixel-ratio: 1.5),
+        ( min-device-pixel-ratio: 1.5) {
+            .button:after {
+            -webkit-transform: scaleY(0.7);
+            transform: scaleY(0.7);
+            width: -webkit-calc(100% / 0.7);
+            height: -webkit-calc(100% / 0.7);
+            width: calc(100% / 0.7);
+            height: calc(100% / 0.7);
+            }
+        }
+    </style>
+</head>
+<body>   
+       <main>
+            <h1>计算器</h1>
+            <button value="C" class="btns">C</button>
+            <button value="Back" class="btns">Back</button>
+            <button value="/" class="btns">/</button>
+            <button value="*" class="btns">x</button>
+            <button value="7" class="btns">7</button>
+            <button value="8" class="btns">8</button>
+            <button value="9" class="btns">9</button>
+            <button value="-" class="btns">-</button>
+            <button value="4" class="btns">4</button>
+            <button value="5" class="btns">5</button>
+            <button value="6" class="btns">6</button>
+            <button value="+" class="btns">+</button>
+            <button value="1" class="btns">1</button>
+            <button value="2" class="btns">2</button>
+            <button value="3" class="btns">3</button>
+            <button value="=" class="btns">=</button>
+            <button value="0" class="btns">0</button>
+            <button value="00" class="btns">00</button>
+            <button value="." class="btns">.</button>
+            <button value="%" class="btns">%</button>
+           
+            <div class="box">
+                <p></p>
+                <p></p>
+            </div>
+       </main>
+    <script>
+        var btns = document.querySelectorAll('button.btns'),
+        text = document.querySelectorAll('.box p'),
+        arr = [],
+        Result;
+        [].slice.call(btns).forEach(function(element) {
+            element.onclick = function(){                                     
+               if(this.value === '='){
+                   try{
+                    Result = eval('('+arr.join('')+')');
+                   }catch(e){
+                    Result = 'error';
+                   }
+                arr  = []; 
+                text[1].innerText = Result;  
+               }else{
+                    text[0].innerText = '';
+                    if(this.value === 'C'){
+                        arr = [];
+                        return; 
+                    }    
+                    if(this.value === 'Back'){
+                        arr.pop();
+                    }else{
+                        arr.push(this.value);
+                    }                                             
+                    arr.map(function(num){
+                        text[0].innerText += num;
+                    });
+               }
+            }
+        });
+    </script>
+</body>
+</html>
