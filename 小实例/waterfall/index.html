@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{padding: 0;margin:0;}
+    #main{
+        position: relative;
+        left: -7px;
+    }
+    .pin{
+        padding: 14px 0 0 14px;
+        float:left;
+    }
+    .box{
+        padding: 10px;
+        border:1px solid #ccc;
+        box-shadow: 0 0 6px #ccc;
+        border-radius: 5px;
+    }
+    .box img{
+        width:162px;
+        height:auto;
+    }
+    </style>
+</head>
+<body>
+    <main>
+        <div id="main"></div> 
+    </main>
+    <script>
+        var oParent = document.getElementById('main');
+        var dataInt = [];
+        for(var i=0;i<98;i++){
+            dataInt.push({'src':i+'.jpg'});
+            if(i<50){
+                createDom(oParent,dataInt[i].src);  
+            }
+        }
+        oParent.getElementsByClassName('pin')[49].getElementsByTagName('img')[0].onload = function(){
+            waterfall(oParent,'.pin');            
+        }
+        window.onscroll = function(){
+            if(isBottom()){
+                dataInt.forEach(function(val){
+                    createDom(oParent,val.src);
+                });             
+                waterfall(oParent,'.pin');  
+            }
+        }
+        function waterfall(parent,pin){
+            var aPin = parent.querySelectorAll(pin);
+            var iPiw = aPin[0].offsetWidth;
+            var num = Math.floor(document.documentElement.clientWidth/iPiw);
+            parent.style.cssText = 'width:'+num*iPiw+'px;margin:0 auto;';
+            var pinHarr = [];
+            aPin.forEach(function(el,index){
+               var pinH = el.offsetHeight;
+                   if(index<num){
+                      pinHarr[index] = pinH;  
+                   }else{
+                    var minH = Math.min.apply(null,pinHarr);
+                    var minindex =  pinHarr.findIndex(function(num){                   
+                            return minH===num;
+                    });
+                    el.style.position = 'absolute';
+                    el.style.left = iPiw*minindex +'px';
+                    el.style.top  = minH+'px';
+                    pinHarr[minindex] = minH+el.offsetHeight;
+                   }
+            });
+        }
+        function isBottom(){
+            var aPin = oParent.querySelectorAll('.pin');
+            var lastPinh = aPin[aPin.length-1].offsetTop+Math.floor(aPin[aPin.length-1].offsetHeight/2); 
+            var Sh = document.documentElement.scrollTop||document.body.scrollTop;
+            var Dh = document.documentElement.clientHeight;
+            return lastPinh<Sh+Dh?true:false;
+        }
+
+        function createDom(obj,src){
+            var oDiv = document.createElement('div');
+            oDiv.className = 'pin';
+            var oBox = document.createElement('div');
+            oBox.className = 'box';
+            var oImg = document.createElement('img');
+            oImg.src = './images/'+src;
+            oBox.appendChild(oImg);
+            oDiv.appendChild(oBox);
+            obj.appendChild(oDiv);
+        }
+    </script>
+</body>
+</html>
