@@ -1,0 +1,589 @@
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			nav a {
+			    position: relative;
+			    display: inline-block;
+			    margin: 10px 25px;
+			    outline: none;
+			    color: #fff;
+			    text-decoration: none;
+			    text-transform: uppercase;
+			    letter-spacing: 1px;
+			    font-weight: 400;
+			    text-shadow: 0 0 1px rgba(255,255,255,0.3);
+			    font-size: 1.35em;
+			    width: 200px;
+			    perspective: 800px;
+			    height: 40px;
+			    line-height: 40px;
+			    box-sizing: border-box;
+			    text-align: center;
+			}
+			a {
+			    text-decoration: none;
+			}
+			nav a span{
+				width: 100%;
+				height: 100%;
+				display: block;
+				text-align: center;
+			}
+			.box{
+				height: 100px;
+				overflow: hidden;
+				min-width: 1300px;
+			}
+			nav{
+				margin: 20px auto;
+				width: 1300px;
+			}
+			.box1{
+				background: #435A6B;
+			}
+			.nav1 a span {
+			    background: #587285;
+			    box-shadow: inset 0 3px #2f4351;
+			    transition: background 0.6s;		
+			    transform-style: preserve-3d;			   
+			    transform-origin: 0% 50%;
+			}
+			.nav1 a span::before {
+			    position: absolute;
+			    top: 0;
+			    left: 0;
+			    width: 100%;
+			    height: 100%;
+			    background: #fff;
+			    color: #2f4351;
+			    content: attr(data-hover);
+			    transform: rotateX(270deg);
+			    transition: transform 0.6s;
+			    transform-origin: 0 0;
+			}
+			.nav1 a span:hover{
+				 background: #2f4351;
+			}
+			.nav1 a span:hover::before{
+				transform: rotateX(0deg);
+			}
+			.box2{
+				background:#3FA46A;
+			}
+           .nav2 a {
+			    color: #237546;
+			    text-shadow: none;
+			    transition: color 0.3s;
+			}
+		.nav2 a::before {
+		    top: 0;
+		    transform: translateY(-10px);
+		}
+		.nav2 a::after{
+			bottom: 0;
+		    transform: translateY(10px);
+		}
+		.nav2 a::before, .nav2 a::after {
+		    position: absolute;
+		    width: 100%;
+		    height: 2px;
+		    background: #fff;
+		    content: '';
+		    opacity: 0;	   
+		    transition: opacity 0.3s, transform 0.3s;
+		    left: 0;
+		}
+		.nav2 a:hover{
+			color: #FFFFFF;
+		}
+		.nav2 a:hover::before,.nav2 a:hover::after{
+			transform: translateY(0px);	
+			opacity: 1;
+		}
+		.box3{
+			background: #CD4436;
+		}
+		.nav3 a span{
+			position: relative;
+			display: inline-block;
+			width: 100%;	
+			background: #e35041;			
+			transition: transform 0.4s, background 0.4s;		
+			transform-style: preserve-3d;
+			transform-origin: 50% 50% -100px;
+			
+		}
+		.nav3 a:hover span{
+		transform:rotateY(-90deg);
+		background:#b53a2d;
+		}
+	 .nav3 a span::before {
+	    position: absolute;
+	    top: 0;
+	    left: 100%;
+	    width: 100%;
+	    height: 100%;
+	    background: #b53a2d;
+	    content: attr(data-hover);
+	    transition: background 0.4s;
+	    transform: rotateY(90deg);
+	    transform-origin: 0 50%;
+	    pointer-events: none;
+		}
+		.nav3 a:hover span::before{
+		background:#E35041;
+		}
+	   .box4{
+	   	background: #F19F0F;
+	   }
+	   .box4 a{
+	   	transition: color 0.3s;
+	   	color: #B4770D;
+	   }
+	   .box4 a::before{
+	   	transform: translateY(-20px);
+	   }
+   		.box4 a::after{
+	   	transform: translateY(20px);
+   		}
+   		 .box4 a::before,.box4 a::after{
+   		 top: 50%;
+	   	margin-top: -1px;
+   		 content: '';
+   		 width: 50%;
+   		 height: 2px;
+   		 background: #B4770D;
+   		 position: absolute;
+   		  transition: height 0.3s, transform 0.3s;
+		  left: 25%;
+		  z-index: -1;
+		  transform-origin: 50% 0;
+   		 }
+   		 .box4 a:hover{
+   		 	color: #FFFFFF;
+   		 }
+        .box4 a:hover::before{
+        	transform: rotate(45deg);
+        }
+        .box4 a:hover::after{
+        	transform: rotate(-45deg);
+        }
+        .box5{
+        	background: #0E83CD;
+        }
+        .box5 a{
+        	color: #FFFFFF;
+        	transition: color 0.3s,transform 0.3s;
+        }
+        .box5 a:hover{
+        	transform: translateY(-2px);
+        	color: #10649b;;
+        }
+        .box5 a::after{
+        	height: 2px;
+        	width: 100%;
+        	background: #FFFFFF;
+        	opacity: 0;
+        	content: '';
+        	transition:opacity 0.3s,transform 0.3s;
+        	position: absolute;
+        	left: 0;
+        	bottom: 0;
+        	transform: translateY(6px);
+        }
+        .box5 a:hover::after{
+        	transform: translateY(0);
+        	opacity: 1;
+        }
+        .box6{
+        	background: #AAB7B7;
+        }
+        .box6 a{
+        	color: #6f8686;
+			text-shadow: 0 0 1px rgba(111,134,134,0.3);
+        }
+        .box6 a span::before{
+        	position: absolute;
+			top: 0;
+			left: 0;
+			color:#fff;
+			opacity: 0;
+			transform: scale(1.1) translateX(10px) translateY(-10px) rotate(4deg);
+			transition: opacity 0.3s,transform 0.3s;
+			text-shadow: 0 0 1px rgba(255,255,255,0.3);
+			content: attr(data-hover);
+			width: 100%;
+			height: 100%;
+        }
+        .box6 a:hover span::before{
+        	opacity: 1;
+        	transform: scale(1) translateX(0) translateY(0) rotate(0);
+        }
+        .box7{
+        	background: #2AC56C;
+        }
+        .box7 a{
+        	color: rgba(0,0,0,0.2);;
+        }
+		.box7 a span::before{
+			position: absolute;
+			top: 0;
+			left: 0;
+			color:#fff;
+			transition: opacity 0.3s,transform 0.3s;
+			content: attr(data-hover);
+			width: 100%;
+			height: 100%;
+		}
+        .box7 a:hover span::before{
+        	transform: scale(0.9);
+        	opacity: 0;
+        }
+        .box8{
+        	background: #435A6B;
+        }
+        .box8 a::before,.box8 a::after{
+        	position: absolute;
+			height: 2px;
+			background: #fff;
+			content: '';
+			opacity: 0.2;
+			transition: all 0.3s;
+			width: 40px;
+        }
+		.box8 a::after{
+			bottom: 0;
+			right: 0;
+			transform: rotate(90deg);
+			transform-origin: 100% 0;
+		}
+		.box8 a::before{
+			top: 0;
+			left: 0;
+			transform: rotate(90deg);
+			transform-origin: 0 0;
+		}
+		.box8 a:hover::before{
+			transform: rotate(0deg) translateX(-50%);
+			opacity: 1;
+			left: 50%;
+		}
+		.box8 a:hover::after{
+			transform: rotate(0deg) translateX(50%);
+			opacity: 1;
+			right: 50%;
+		}
+		.box9{
+			background: #CD4436;
+		}
+		.box9 a::before,.box9 a::after{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 100px;
+			height: 100px;
+			border: 2px solid rgba(0,0,0,0.1);
+			border-radius: 50%;
+			content: '';
+			opacity: 0;
+			box-sizing: border-box;
+			transition: transform 0.3s, opacity 0.3s;
+			transform: translateX(-50%) translateY(-50%) scale(0.2);
+		}
+		.box9 a::after{
+			width: 90px;
+			height: 90px;
+			border-width: 6px;
+			transform: translateX(-50%) translateY(-50%) scale(0.8);
+		}
+		.box9 a:hover::after,.box9 a:hover::before{
+			transform: translateX(-50%) translateY(-50%) scale(1);
+			opacity: 1;
+		}
+		.box10{
+			background: #0E83CD;
+		}
+		.box10 a{
+			
+			border-top: 2px solid #0972b4;
+			color: #0972b4;
+			text-shadow: none;
+		}
+		.box10 a span{
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+		.box10 a span::before{
+			position: absolute;
+			top: 0;
+			left: 0;
+			overflow: hidden;
+			
+			width: 0;
+			border-bottom: 2px solid #fff;
+			color: #fff;
+			content: attr(data-hover);
+			transition: width 0.5s;
+			height: 100%;
+		}
+		.box10 a:hover span::before{
+			width: 100%;
+		}
+		.box11{
+			background: #16A085;
+		}
+		.box11 a{
+		overflow: hidden;
+		}
+		.box11 a::before{
+			position: absolute;
+			width:100%;
+			height: 100%;
+			background: #FFFFFF;
+			color: #0F7C67;
+			z-index: -1;
+			top: 0;
+			left: 0;
+			transition:transform 0.5s; 
+			content: attr(data-hover);
+			transform: translateX(-100%);
+		}
+		.box11 a span{
+			background: #0f7c67;
+			color: #FFFFFF;
+			transition: transform 0.5s;
+		}
+		.box11 a:hover::before{
+			transform: translateX(0);	
+		}
+		.box11 a:hover span{
+		transform: translateX(100%);	
+		}
+		.box12{
+			background: #9E487F;
+			height: 200px;
+		}
+		.box12 a{
+			height: 80px;
+		}
+		.box12 a::before,.box12 a::after{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 1px;
+			opacity: 0.2;
+			background: #fff;
+			content: '';
+		}
+		.box12 a::before{
+			transition: height 0.3s,opacity 0.3s;
+		}
+		.box12 a::after{
+			position: absolute;
+			top: 100%;
+			opacity: 0;
+			transform: translateY(-10px);
+			transition: transform 0.3s, opacity 0.3s;
+		}
+       .box12 a span:last-child{
+       	position: absolute;
+       	left: 0;
+       	top: 40px;
+       	z-index: 1;
+		display: block;
+		color: rgba(0,0,0,0.4);
+		text-shadow: none;
+		text-transform: none;
+		font-style: italic;
+		font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+		opacity: 0;
+		transition: transform 0.3s, opacity 0.3s;
+		transform: translateY(-100%);
+       }
+		.box12 a:hover span:last-child{
+			opacity: 1;
+			transform: translateY(0);
+		}
+        .box12 a:hover::before{
+        	height: 4px;
+        	opacity: 1;
+        }
+        .box12 a:hover::after{
+        	opacity: 1;
+        	transform: translateY(0);
+        }
+        .box13{
+        	background: #435A6B;
+        }
+        .box13 a::before{
+        	border: 3px solid #354856;
+        	position: absolute;
+        	top: -3px;
+        	left: -3px;
+        	width: 100%;
+        	height: 100%;
+        	transition:transform 0.3s,opacity 0.3s; 
+        	content: '';
+        }
+        .box13 a::after{
+        	border: 3px solid #fff;
+        	position: absolute;
+        	top: -3px;
+        	left: -3px;
+        	width: 100%;
+        	height: 100%;
+        	opacity: 0;
+        	content: '';        	
+        	transition:transform 0.3s,opacity 0.3s; 
+        	transform: translateY(-7px) translateX(6px);
+        }
+        .box13 a:hover::before{
+        	opacity: 0;
+        	transform: translateX(-5px) translateY(5px);
+        }
+        .box13 a:hover::after{
+        	opacity: 1;
+        	transform: translateX(0px) translateY(0px);
+        }
+        .box14{
+        	background: #ECF0F1;
+        }
+        .box14 a{
+        	color: #566473;
+        }
+        .box14 a::before,.box14 a::after{
+        	position: absolute;
+            width: 100%;
+            height: 3px;
+            background: #566473;
+            left: 0;
+            top: 100%;
+            transform: scale(0.85);
+            transition: transform 0.3s;
+            content: '';
+        }
+        .box14 a::before{
+        	opacity: 0;
+        	transition: opacity 0.3s,top 0.3s, transform 0.3s;
+        }
+        .box14 a:hover::before{
+        	top: 0;
+        	opacity: 1;
+        	transform: scale(1);
+        }
+		.box14 a:hover::after{
+			transform: scale(1);
+		}
+		.box15{
+			background: #0E83CD;
+		}
+		.box15 a::before,.box15 a::after{
+			position: absolute;
+			width: 100%;
+			height: 2px;
+			background: #fff;
+			left:0;
+			top: 0;
+			content: '';
+			transition: top 0.3s;
+		}
+		.box15 a::after{
+			width: 2px;
+			transition: height 0.3s;
+		}
+		.box15 a:hover::before{
+			top: 100%;
+		}
+		.box15 a:hover::after{
+			height: 40px;
+		}
+		.box16{
+			background: #CD4436;
+		}
+		.box16 a{
+			overflow: hidden;
+		}
+		.box16 a span{
+			transition: transform 0.3s;
+		}
+		.box16 a::before{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top:100%;
+			left:0;
+			font-weight: 700;
+			content: attr(data-hover);
+			transition: top 0.3s;
+		}
+		.box16 a:hover span{
+			transform: translateY(-100%);
+		}
+		.box16 a:hover::before{
+			top: 0;
+		}
+		.box17{
+			background: #0E83CD;
+		}	
+		.box17 a{
+			perspective: 1000px;
+		}
+		.box17 a span{
+			position: relative;
+			display: inline-block;
+			background: #2195de;			
+			transition: transform 0.3s;		
+			transform-origin: 50% 0;
+			transform-style: preserve-3d;
+		}	
+		.box17 a span::before{
+			position: absolute;
+			top: 100%;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: #0965a0;
+			content: attr(data-hover);			
+			transition: background 0.3s;			
+			transform: rotateX(-90deg);
+			transform-origin: 50% 0;
+		}
+		.box17 a:hover span{
+				transform: rotateX(90deg) translateY(-22px);
+				
+		}
+       .box17 a:hover span::before{
+      		 background: #28a2ee;
+       }
+       .box18{
+       	background: #435A6B;
+       }
+       .box18 a::before{
+       	content: '[';
+       	position: absolute;
+       	transition: transform 0.3s, opacity 0.2s;
+       	opacity: 0;
+       	left:0;
+       	top: 0;
+       	transform: translateX(20px);
+       }
+       .box18 a::after{
+       	content: ']';
+       	position: absolute;
+       	transition: transform 0.3s, opacity 0.2s;
+       	opacity: 0;
+       	right:0;
+       	top: 0;
+       	transform: translateX(-20px);
+       }
+       .box18 a:hover::before{
+       	transform: translateX(0);
+       	opacity: 1;
+       }
+       .box18 a:hover::after{
+       	transform: translateX(0);
+       	opacity: 1;
+       }
