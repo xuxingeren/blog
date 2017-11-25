@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+		<title>曲面阴影</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			header{
+				text-align: center;
+			}
+			.box{
+				width: 80%;
+				height: 200px;
+				line-height: 50px;
+				text-align: center;
+				border-radius: 8px;
+				margin: 20px auto;
+				box-shadow: 0 1px 4px rgba(0,0,0,0.8),0 0 40px rgba(0,0,0,0.1) inset;
+				position: relative;
+				background: #fff;
+				
+			}
+			.box:hover:after,.box:hover:before{
+				box-shadow: 0 0px 0px rgba(0,0,0,0);
+			}
+			.box:after,.box:before{
+				content: '';
+				position: absolute;
+				bottom: 0px;
+				top: 50%;
+				left: 20px;
+				right: 20px;
+				background: red;
+				border-radius: 100px/10px;
+				box-shadow: 0 0px 30px rgba(0,0,0,0.8);
+				z-index: -10;
+				transition: all 1s; 
+			}
+			.box p{
+				font-size: 20px;
+			}
+			.main{
+				width: 1000px;
+				overflow: hidden;
+				margin: 0 auto;
+			}
+			.imgbox{
+				height: 300px;
+				width: 360px;
+				margin: 50px ;
+				display: inline-block;
+				border: 2px solid #999;
+				padding: 5px;
+				border-radius: 4px;
+				box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+				position: relative;
+				  background:#fff;
+				  text-align: center;
+				
+			}
+			.imgbox:after,.imgbox:before{
+				content:'';
+				position:absolute;
+				 z-index:-1; 
+				background:transparent;
+				width:88%;
+				height:90%;
+				right:20px;
+				bottom:15px;
+				  transition: all 1s;
+			}
+			.imgbox:hover{
+				animation-play-state:paused;
+			}
+			.imgbox:hover:after,.imgbox:hover:before{
+				box-shadow:0px 0px 0px rgba(0,0,0,0);
+			}
+			.imgbox:after{
+				transform:skew(-12deg) rotate(-5deg); 
+				box-shadow:20px 20px 20px rgba(0,0,0,0.8);
+			}
+			.imgbox:before{
+				transform:skew(12deg) rotate(5deg); 
+				box-shadow:-20px 20px 20px rgba(0,0,0,0.8);
+			}
+			img{
+				height: 300px;
+				width: 360px;			
+			}
+			
+			.rotate{
+				animation:img 4s ease-in-out 0s infinite;
+			}
+			.turn{
+				animation:img2 4s ease-in-out 0s infinite;
+			}
+			.turn2{
+				animation:img3 4s ease-in-out 0s infinite;
+			}
+			@keyframes img{
+				0%{
+					transform:rotate(0deg);
+				}
+				100%{
+					transform:rotate(360deg);
+				}
+			}
+			@keyframes img2{
+				0%{ transform: rotateY(0deg);
+				}
+				100%{
+					transform:rotateY(360deg);
+				}
+			}
+			@keyframes img3{
+				0%{ transform: rotateX(0deg);
+				}
+				100%{
+					transform:rotateX(360deg);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<section>
+			<div class="top">
+				<div class="box">
+					<p>css3实现曲面阴影立体效果</p>
+					<p>鼠标放上来试试（图片也可以）</p>
+					 <audio src="http://www.xuxin123.com/code/curveimg/MO1.mp3" id="audio"  autoplay="autoplay" controls="controls"></audio>
+				 <p>梶浦由記 - MO1.mp3</p>
+				</div>
+			</div>
+			<div class="main">
+				<div class="imgbox">
+				<img src="1.jpg"/>
+			</div>
+				<div class="imgbox turn">
+				<img src="2.jpg"/>
+			</div>
+				<br />
+				<img src="3.jpg"/>
+			</div>
+			<input name="checkbox" value="hhhh" type="checkbox">
+				<div class="imgbox turn2">
+				<img src="4.jpeg"/>
+			</div>
+			</div>
+		</section>
+		<script>	
+			document.getElementsByTagName("audio")[0].volume = 0.3;
+		</script>
+	</body>
+</html>
