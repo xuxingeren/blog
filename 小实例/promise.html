@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul{
+            list-style: none;
+        }
+        button{
+            outline: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            border:none;
+            cursor: pointer;
+            color: #ffffff;
+            background-color: #ff3300;
+        }
+    </style>
+</head>
+<body>
+  <button onclick="aaa()">进攻</button>
+  <ul>
+
+  </ul>
+    <script>
+var ul  = document.querySelector('ul');
+
+function aaa(){
+    ul.innerHTML = '';
+    brave.attribute = {
+        attack:10,
+        defense:4,
+        life:200,
+        experience:0,
+        Grade:0,
+    };
+    Raiders(monster[0],'骷髅').then(function(){
+    return Raiders(monster[1],'守卫');
+}).then(function(){
+    return Raiders(monster[2],'魔王');
+}).then(function(){
+    var text = `成功击败魔王`;
+    addli(text);
+}).catch(function(name){
+    var text =  `攻略${name}失败，请从新来过`               
+     addli(text);
+})
+}
+
+
+
+var brave = {
+    attribute:{
+        attack:10,
+        defense:4,
+        life:200,
+        experience:0,
+        Grade:0,
+    },   
+    state:function(state){
+        var text = `勇者${state}，攻击${this.attribute.attack},防御${this.attribute.defense}，生命${this.attribute.life}，等级${this.attribute.Grade}`;        
+        addli(text);
+    },
+    request:function(obj){
+        var monster = obj.monster;
+        for(var i in monster){
+            var kill;
+            if(Math.random()>0.4){
+                var sh = this.attribute.attack-monster[i].defense;
+                if(sh>0){
+                    kill = Math.ceil(monster[i].life/sh); 
+                }else{
+                    kill = 10000;
+                }         
+            }else{
+                var sh = this.attribute.attack*2-monster[i].defense;
+                if(sh>0){
+                    kill = Math.ceil(monster[i].life/sh); 
+                }else{
+                    kill = 10000;
+                }     
+            }
+            var Injured = monster[i].attack-this.attribute.defense;
+            if(kill===10000){
+                this.attribute.life = 0;
+            }else{
+                this.attribute.life =  Injured>0?this.attribute.life-(kill*Injured):this.attribute.life;
+            }
+           
+            if(this.attribute.life>0){
+                this.attribute.experience+=monster[i].experience;
+                if(this.attribute.experience==50){                                
+                    Math.random()>0.4?this.attribute.attack = this.attribute.attack*2:this.attribute.attack = this.attribute.attack*3;
+                    Math.random()>0.4?this.attribute.defense = this.attribute.defense*2:this.attribute.defense = this.attribute.defense*3;
+                    this.attribute.life = this.attribute.life+50;   
+                    this.attribute.Grade = this.attribute.Grade+1;  
+                    this.state('升级');            
+                }
+                if(this.attribute.experience==150){
+                        Math.random()>0.3?this.attribute.attack = this.attribute.attack*2:this.attribute.attack = this.attribute.attack*4;
+                        Math.random()>0.3?this.attribute.defense = this.attribute.defense*2:this.attribute.defense = this.attribute.defense*4;
+                        this.attribute.life = this.attribute.life+100;
+                        this.attribute.Grade = this.attribute.Grade+1; 
+                        this.state('升级');                  
+                    } 
+                if(this.attribute.experience==250){
+                            Math.random()>0.2?this.attribute.attack = this.attribute.attack*2:this.attribute.attack = this.attribute.attack*5;
+                            Math.random()>0.2?this.attribute.defense = this.attribute.defense*2:this.attribute.defense = this.attribute.defense*5;
+                            this.attribute.life = this.attribute.life+150;
+                            this.attribute.Grade = this.attribute.Grade+1; 
+                            this.state('升级');             
+                    }
+                obj.success(this.state.bind(this));
+            }else{
+                obj.error(this.state.bind(this));
+                return;
+            }
+        }
+    }
+}
+var monster = [];
+var skeleton = [];
+var elite = [];
+var devil = [{attack:200,defense:200,life:300}];
+skeleton = generate(skeleton,10,2,6,50,10);
+elite = generate(elite,3,10,30,100,50);
+monster.push(skeleton,elite,devil);
+
+var Raiders = function(arr,name){
+    return new Promise(function(resolve,reject){      
+            brave.request({
+                name:name,
+                monster:arr,
+                success:function(fn){
+                    var text = `攻略${this.name}成功`;
+                    addli(text);
+                    fn('状态');
+                    resolve();
+                },
+                error:function(fn){                    
+                    fn('状态');
+                    reject(this.name);
+                }
+            });
+    })
+}
+
+
+
+
+function addli(text){
+    var li = document.createElement('li');   
+    li.innerText = text;
+    ul.appendChild(li);
+    console.log(text);
+}
+
+
+function generate(arr,num,min,max,life,experience){
+    for(var i=0;i<num;i++){
+        var random = Rand(min,max);
+        arr.push({
+            attack:random,
+            defense:random,
+            life:life,
+            experience:experience
+        })
+    }
+    return arr;
+}
+function Rand(Min,Max){
+    var Range = Max - Min;   
+    var Rand = Math.random();   
+    return(Min + Math.round(Rand * Range));  
+}
+
+   
+      
+    </script>                   
+</body>
+</html>
