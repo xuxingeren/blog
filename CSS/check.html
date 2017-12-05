@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>纯css3导航</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+		<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		body,html{
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			font-family: "微软雅黑";
+		}
+			input,.nav{
+				width: 20%;
+				height: 80px;
+				display: block;
+				position: fixed;
+				bottom: 0;
+				text-align: center;
+				line-height: 80px;
+				font-size: 20px;
+				text-decoration: none;
+				cursor: pointer;
+				background: #336CA6;
+				color: #fff;
+				box-shadow: 1px 1px 2px #888; 
+			}
+			input:checked +a,input:hover +a{
+				background: #295685;
+			}
+			.nav{
+				z-index: 99;
+			}
+			input{
+				z-index: 100;
+				opacity: 0;
+			}
+			.nav-2,.nav-2 + a{
+				left: 20%;
+			}
+			.nav-3,.nav-3 + a{
+				left: 40%;
+			}
+			.nav-4,.nav-4 + a{
+				left: 60%;
+			}
+			.nav-5,.nav-5 + a{
+				left: 80%;
+			}
+			.main,.sectionbox{
+				height: 100%;
+				width: 100%;
+				position: relative;
+			}
+			.main{
+			transition: all 0.6s ease-in-out;	
+			color: #fff;
+			font-size: 18px;
+			}
+			.nav-1:checked ~ .main{
+				transform: translateY(0%);
+			}
+			.nav-2:checked ~ .main{
+				transform: translateY(-100%);
+			}
+			.nav-3:checked ~ .main{
+				transform: translateY(-200%);
+			}
+			.nav-4:checked ~ .main{
+				transform: translateY(-300%);
+			}
+			.nav-5:checked ~ .main{
+				transform: translateY(-400%);
+			}
+			.nav-1:checked ~ .main  .sectionbox1 p,.nav-2:checked ~ .main .sectionbox2 p,.nav-3:checked ~ .main .sectionbox3 p,.nav-4:checked ~ .main .sectionbox4 p,.nav-5:checked ~ .main .sectionbox5 p{
+				animation:text 1s ease 0s;
+			}
+			.sectionbox p{
+				font-size: 20px;
+				text-align: center;
+				padding-top: 80px;
+				box-sizing: border-box;
+			}
+			body{
+				background: rgba(0,0,0,0.6);
+			}
+			.box{
+				margin: 50px;
+			}
+		   label.check input[type="checkbox"]:checked+.checkbox:after{
+				  content: '\2714';
+				  background-color: #ff5757;
+				  color: #FFF;
+				  border-color: #ff5757; 
+		   } 
+		   input[type="checkbox"]{
+		   		  display: none;
+					 
+		   }
+		   label.check input[type="checkbox"]+.checkbox:after{
+				content: '';
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 20px;
+				height: 20px;
+				border: 1px solid #CCC; 
+				box-sizing: border-box;
+				line-height: 18px;
+				text-align: center;
+				border-radius: 3px;
+				font-size: 14px;			    
+				text-indent:initial;
+		   }
+		   label.check{
+				position: relative;
+				box-sizing: border-box;
+				line-height: 20px;
+				font-size: 14px;
+				height: 20px;
+				display: inline-block;
+				cursor: pointer;
+				min-width: 20px;				
+		   }
+		   label.check .checkbox{
+			text-indent: 25px;
+		   }	
+		   label.switch{
+			   display: inline-block;
+			   width: 60px;
+			   height: 30px;
+			   cursor: pointer;
+		   }
+		   label.switch .switchbox{
+			   height: 100%;				
+				box-sizing: border-box;
+				position: relative;
+				border-radius: 34px;
+				background-color: #e5e5e5;
+				transition: all 0.3s;
+		   }
+		   label.switch input[type="checkbox"]+.switchbox:after{
+				height: 30px;
+				width: 30px;
+				border-radius: 50%;
+				box-sizing: border-box;
+				border: 1px solid #dddddd;
+				position: absolute;
+				left: 0;
+				top: 0;
+				content: '';
+				transition: all 0.3s;
+				background-color: #ffffff;
+				transform: translateX(0);
+				box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+				z-index: 2;
+		   }
+		   label.switch input[type="checkbox"]+.switchbox:before{
+    		content: ' ';
+			position: absolute;
+			left: 2px;
+			top: 2px;
+			width: 56px;
+			border-radius: 26px;
+			box-sizing: border-box;
+			height: 26px;
+			background: #fff;
+			z-index: 1;
+			transition: all 0.3s;
+			transform: scale(1);
+		}
+			label.switch input[type="checkbox"]:checked+.switchbox{
+			   background-color: #4cd964;
+		   }
+		   label.switch input[type="checkbox"]:checked+.switchbox:after{
+			transform: translateX(30px);
+		   }
+		   label.switch input[type="checkbox"]:checked+.switchbox:before{
+			transform: scale(0);
+		   }
+
+		   label.switch2{
+			   display: inline-block;
+			   width: 80px;
+			   height: 30px;
+			   cursor: pointer;
+			   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+		   }
+		   label.switch2 .switchbox2{
+			   height: 100%;				
+				box-sizing: border-box;
+				position: relative;
+				border-radius: 3px;
+				background-color: #ff0000;
+				transition: all 0.3s;
+				overflow: hidden;
+				color:#fff;
+				line-height:30px;
+		   }
+		   label.switch2 .switchbox2 span{
+				float: left;
+				width: 50%;
+				text-align: center;
+		   }
+		   label.switch2 input[type="checkbox"]+.switchbox2:after{
+				height: 30px;
+				width: 40px;
+				box-sizing: border-box;
+				border: 1px solid #dddddd;
+				position: absolute;
+				left: 0;
+				top: 0;
+				content: '';
+				transition: all 0.3s;
+				background-color: #ffffff;
+				transform: translateX(0);
+				z-index: 2;
+				background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+				background-repeat: repeat-x;
+		   }
+		   label.switch2 input[type="checkbox"]:checked+.switchbox2{
+			   background-color: #4cd964;
+		   }
+		   label.switch2 input[type="checkbox"]:checked+.switchbox2:after{
+			transform: translateX(40px);
+		   }
+			.bt{
+				position: relative;
+				width: 60px;
+				height: 10px;
+				background: #fff;
+				margin-top: 20px;
+			}
+			.mybox{
+				width: 60px;
+				height: 50px;
+				margin: 100px;
+				overflow: hidden;
+			}
+			.mybox:hover .bt{
+				height: 0;
+				transform: translateX(0px);
+			}
+			.bt:before,.bt:after{
+				margin-top: -5px;
+				top: 50%;
+		   		 content: '';
+		   		 width: 100%;
+		   		 height: 10px;
+		   		 background: #fff;
+		   		 position: absolute;
+		   		  transition: height 0.3s, transform 0.3s;
+				  left: 0;
+				  z-index: 1;
+				  transform-origin: 50% 0; 
+				  opacity: 1;
+			}
+			.bt:before{
+				transform: translateY(-20px);
+			}
+			.bt:after{
+				transform: translateY(20px);
+			}
+			.mybox:hover .bt:after{
+				transform: rotate(45deg) translateX(5px) ;
+				width: 56px;
+				
+			}
+			.mybox:hover .bt:before{
+				transform: rotate(-45deg) translateX(-5px) ;
+				width: 56px;
+			}
+			.mybox2{
+				border: 2px solid #fff;
+				width: 100px;
+				height: 50px;
+				margin-left: 150px;
+				position: relative;
+				line-height: 50px;
+				font-size: 18px;
+				color: #fff;
+				text-align: center;
+			}
+			.mybox2 span:nth-child(1),.mybox2 span:nth-child(3){
+				width: 0px;
+				height: 1px;
+				background: #fff;
+				position: absolute;
+				transition: all 1s; 
+			}
+			.mybox2:hover span:nth-child(1){
+				transform: translateX(100px);
+				width: 100px;
+			}
+			.mybox2:hover span:nth-child(3){
+				transform: translateX(-100px);
+				width: 100px;
+			}
+			.mybox2 span:nth-child(1){
+				top: -2px;
+				left: -100px;
+			}
+			.mybox2 span:nth-child(3){
+				bottom: -2px;
+				right: -100px;
+				
+			}
+			.mybox2 span:nth-child(2),.mybox2 span:nth-child(4){
+				width: 1px;
+				height: 0px;
+				background: #fff;
+				position: absolute;
+				transition: all 1s; 
+			}
+			.mybox2:hover span:nth-child(2){
+				transform: translateY(50px);
+				height: 50px;
+			}
+			.mybox2:hover span:nth-child(4){
+				transform: translateY(-50px);
+				height: 50px;
+			}
+			.mybox2 span:nth-child(4){
+				bottom: -50px;
+				left: -2px;
+			}
+			.mybox2 span:nth-child(2){
+				top: -50px;
+				right: -2px;
+				
+			}
+			@keyframes text{
+				from{
+					transform: translateX(-100px);
+					opacity: 0;
+				}
+				to{
+					transform: translateX(0px);
+					opacity: 1;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		
+			<input type="radio" name="nav" class="nav-1" checked="checked"/>
+			<a  class="nav">首页</a>
+			<input type="radio" name="nav" class="nav-2"/>
+			<a  class="nav">新闻</a>
+			<input type="radio" name="nav" class="nav-3"/>
+			<a  class="nav">娱乐</a>
+			<input type="radio" name="nav" class="nav-4"/>
+			<a  class="nav">音乐</a>
+			<input type="radio" name="nav" class="nav-5"/>
+			<a  class="nav">其他</a>
+		
+		<section class="main">
+		<div class="sectionbox1 sectionbox">
+		<div style="overflow:hidden;background:#F4f4f4;color:#000;">
+				<div class="box">			
+						<label class="check">
+							<input type="checkbox"  class=""/>
+							<div class="checkbox">
+								哈哈哈哈
+							</div>		
+						</label>			
+					</div>	
+					<div class="box">			
+						<label class="switch">
+							<input type="checkbox">
+							<div class="switchbox"></div>
+						</label>
+					</div>
+					<div class="box">
+						<label class="switch2">
+							<input type="checkbox">
+							<div class="switchbox2">
+								<span>yes</span>
+								 <span>no</span>
+							</div>
+						</label>
+					</div>		
+		</div>	
+		<div class="mybox">
+			<div class="bt"></div>
+		</div>
+		<div class="mybox2">
+			按钮
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+		</div></div>
+				<div class="sectionbox2 sectionbox"><p>我是新闻</p></div>
+				<div class="sectionbox3 sectionbox"><p>我是娱乐</p></div>
+				<div class="sectionbox4 sectionbox"><p>我是音乐</p></div>
+				<div class="sectionbox5 sectionbox"><p>我是其他</p></div>
+		</section>
+	</body>
+</html>
