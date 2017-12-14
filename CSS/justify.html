@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.container{
+				width:1000px;
+			    margin:50px auto 0;
+			    background:#ddd;
+				padding: 50px;
+				text-align: center;
+			}
+			.justify{
+				text-align: justify;
+				text-justify: inter-ideograph;
+			}
+			.justify .item{
+				display:inline-block;
+				*zoom:1;
+				*display: inline;
+				text-align: center;
+			}
+			.justify span{
+			  	 width:24px;
+		        line-height:24px;		
+		        height: 24px;
+		        display:inline-block;		       		        		      
+		        background:#333;
+		        text-align:center;
+		        color:white;
+		        border-radius:50%;
+		        overflow: hidden;
+		        font-style: normal;
+			}
+			.justify p{
+				padding-top: 10px;
+			}
+			 .justify:after{
+				content: '';
+				width: 100%;
+				position: relative;
+				display: inline-block;				
+			}
+			.justify b{
+				display: inline-block;
+				position:relative;
+				height:0px;				
+				width:100%;						
+			} 
+			.btn{
+				background-color: #ffffff;
+				border-radius: 3px;
+				border: 1px solid #DDD;
+				padding: 5px 10px;
+				cursor: pointer;
+				margin-right: 10px;
+				outline: none;
+			}
+			.active span{
+				background-color: red;
+			}
+			.active p{
+				color:red;
+			}
+			#showimg{
+				display: none;
+				margin: 10px auto;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+		<div class="justify">
+			<div class="item">
+				<span>1</span>
+				<p>第一，绝对不意气用事</p>
+			</div>
+			<div class="item">
+				<span>2</span>
+				<p>第二，绝对不漏判任何一件坏事</p>
+			</div>
+			<div class="item">
+				<span>3</span>
+				<p>第三，绝对裁判的公正漂亮</p>
+			</div>
+			 <!--[if lte IE 7]>
+			<b> </b>
+			<![endif]-->
+		</div> 
+		<div id="showimg">
+			<img  src="http://ouzdb04w7.bkt.clouddn.com/image/2017/12/13/2.jpg" alt="蜻蜓队长">
+			<p>蜻蜓队长前来觐见</p>		
+		</div>
+		<button class="btn" onclick="prev()">上一步</button><button class="btn" onclick="next()">下一步</button>
+	</div> 	
+	</body>
+	<script>
+		var i = -1;
+		var item = document.querySelectorAll(".item");
+		var showimg = document.getElementById("showimg");
+		var maxlen = item.length;
+		function prev(){
+			i--
+			i<0?i=-1:i;						
+			active(i);			
+		}
+		function next(){
+			i++;
+			i>maxlen-1?i=maxlen-1:i;		
+			active(i);			
+		}
+		function active(num){
+			if(num===maxlen-1){
+				showimg.style.display = 'block';
+			}else{
+				showimg.style.display = 'none';
+			}
+			for(var i=0;i<maxlen;i++){
+				if(i<=num){
+					item[i].className = 'item active';
+				}else{
+					item[i].className = 'item';
+				}
+			}
+		}
+	</script>
+</html>
