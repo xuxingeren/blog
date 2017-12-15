@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .tab{
+            margin: 100px;
+            border: 1px #e5e5e5 solid;
+            width: 400px;
+        }
+        #content div{
+            display: none;
+        }
+        ul.list{
+            height:38px;
+            line-height: 38px;
+            overflow: hidden;
+            list-style: none;
+            background: #f8f8f8;
+            margin-bottom: -1px;            
+        }
+        #list li{
+            float: left;
+            width: 99px; 
+            text-align: center;
+            border-left: 1px #e5e5e5 solid;
+            border-right: 1px #e5e5e5 solid;
+            margin-left: -1px;
+            cursor: pointer;
+        }
+       .content{
+            border-top: 1px #e5e5e5 solid;
+            height: 100px;
+            padding: 10px;
+        }
+         #list .active{
+            position: relative;
+            background-color: #FFf;
+            
+        }
+        .box{
+            width: 400px;
+            height: 400px;
+            background-color: #e5e5e5;
+            position: relative;
+        }
+        .pox{
+            width: 100px;
+            height: 100px;
+            background-color: #000;
+            margin: auto;  
+            position: absolute;  
+            top: 0; left: 0; bottom: 0; right: 0;  
+        }
+    </style>
+</head>
+<body>
+   <div class="tab">
+        <ul class="list" id="list">
+            <li class="active">margin</li>
+            <li>padding</li>
+            <li>border</li>
+            <li style="border-right:none;">content</li>
+        </ul>
+        <div class="content" id="content">
+            <div  style="display:block;">我是margin</div>
+            <div>我是padding</div>
+            <div>我是border</div>
+            <div>我是content</div>
+        </div>
+   </div>
+   <div class="box">
+       <div class="pox"></div>
+   </div>
+<script>
+    var lists = document.getElementById('list').getElementsByTagName('li');
+    var divs = document.getElementById('content').getElementsByTagName('div');
+    for(var i=0;i<lists.length;i++){
+        (function(i){
+            lists[i].onmousemove = function(){
+                for(var j =0 ;len = divs.length,j<len; j++){
+                    lists[j].className = "";
+                    divs[j].style.display = "none";
+                }
+                lists[i].className = "active";
+                divs[i].style.display = "block";
+            }            
+        })(i)
+    } 
+</script>
+</body>
+</html>
