@@ -1,0 +1,74 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.main{
+				width: 500px;
+				margin:0 auto;
+			}
+				.box{
+					position: relative;
+					padding-top: 56.25%;/*图片高度/图片宽度*100%*/
+					overflow: hidden;
+				}
+				.box img{
+					position: absolute;
+					top: 0;
+					width: 100%;
+					height: 100%;
+				}
+			 .figure {
+		         padding-top:56.25%; /*图片高度/图片宽度*100%*/
+		         background: url("http://ouzdb04w7.bkt.clouddn.com/image/2017/10/27/timg3.jpg") no-repeat;
+		          background-size:cover;
+		          background-position:center;		         
+		    }
+			.btn{
+				border: red;
+				background-color:red;
+				color: #FFF;
+				outline: none;
+				padding: 6px 12px;
+				border-radius: 3px;
+				cursor: pointer;
+			}
+			.red{
+				color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<button class="btn" id="btn">加载</button>
+		<div class="main">
+			<div class="item">
+					<div class="box">
+						<img src=""/>			
+					</div>
+					<p>我是一段话，我的位置不会改变</p>
+					<div class="column">
+							<div class="figure" ></div>
+					</div>
+					<p>我是一段话，我的位置不会改变</p>
+			</div>
+			<div class="item">
+					<img  style="width:100%;" src="" alt="">
+					<p class="red">我是一段话，我的位置会改变</p>
+			</div>	
+		</div>	 
+	</body>
+	<script>
+		var url = "http://ouzdb04w7.bkt.clouddn.com/image/2017/10/27/timg1.jpg";
+		var btn = document.getElementById("btn");
+		var imgs = document.getElementsByTagName("img");
+		btn.onclick = function(){
+			for(var i=0;i<imgs.length;i++){
+				imgs[i].src = url;
+			}
+		}
+	</script>
+</html>

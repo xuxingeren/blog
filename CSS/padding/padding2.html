@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .mybox{
+           width: 100%;
+           height: 300px;
+           text-align: justify;
+           text-justify: inter-ideograph;  
+            padding: 10%;  
+            box-sizing: border-box;
+       }
+       .mybox:after{
+                content: '';
+				width: 100%;
+				position: relative;
+				display: inline-block;
+       }
+       .mybox .box{
+           width: 12.5%;
+           background: red;
+           display: inline-block;
+           position:relative;    
+       }
+       .box:before{
+                content: '';
+                padding-top: 100%;
+                box-sizing: border-box;   
+                display: block;
+                width: 0;  
+            }
+        .pox{                
+            position:absolute;
+            height:100%;
+            width:100%;
+            left: 0;
+            top: 0;         
+            border: 1px solid red;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+        <div class="mybox">
+            <div class="box"><div class="pox"></div></div>
+            <div class="box"><div class="pox"></div></div>
+            <div class="box"><div class="pox"></div></div>
+            <div class="box"><div class="pox"></div></div>
+            <div class="box"><div class="pox"></div></div>
+        </div>  
+</body>
+</html>
