@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+		.box{
+			text-align: center;
+        }
+        ul{
+            list-style: none;       
+        }
+		.box ul{
+			width: 200px;
+			height: 200px;
+			border-radius: 50%;
+			border:1px solid red;
+			position: relative;
+			display: inline-block;
+			margin: 100px;
+		}
+		.box li{
+			width: 50px;
+			height:50px;
+			border:1px solid red;
+			border-radius: 50%;
+			line-height: 48px;
+			text-align: center;
+			position: absolute;
+			top: 50%;
+			left:50%;
+			margin: -25px 0 0 -25px;
+			transform-origin:50% 50%;
+		}
+	</style>
+</head>
+<body>
+    <div class="box">
+            <ul class="pox">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li>7</li>
+                <li>8</li>
+                <li>9</li>
+                <li>10</li>
+                <li>11</li>
+                <li>12</li>
+            </ul>
+            <ul class="pox2">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li>7</li>
+                <li>8</li>
+                <li>9</li>
+                <li>10</li>
+                <li>11</li>
+                <li>12</li>
+            </ul>
+        </div>
+        <script>
+                var lists = document.querySelectorAll(".box .pox li");
+                for(var i=0;i<lists.length;i++){
+                    lists[i].style.cssText = `transform: rotate(${i*30}deg) translate(98px, -50%);`;
+                }
+                var lists2 = document.querySelectorAll(".box .pox2 li");
+                for(var j=0;j<lists2.length;j++){
+                    var r = lists2[0].parentNode.offsetHeight/2,
+                    angle = j*30/180*Math.PI;
+                    x = r + r*Math.cos(angle);
+                    y = r + r*Math.sin(angle);
+                    lists2[j].style.cssText = `top:${y}px;left:${x}px;`;
+                }
+            </script>
+</body>
+</html>
