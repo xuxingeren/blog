@@ -103,7 +103,7 @@
 			}
 		myfile.onchange = function(){
 			var files = this.files;
-			if(!files)return;		
+			if(!files.length)return;		
 			for(var i = 0;i<files.length;i++){	
 				   filearr.push(files[i]);
 					var oLi = '<li><img src="'+URL.createObjectURL(files[i])+'"><span class="close" onclick="closeli(this)" >&times;</span></li>';	
