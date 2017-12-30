@@ -217,8 +217,8 @@
         function texthan(n) {
             var han = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十'];
             if (n > 10) {
-                var s = Math.floor(n / 10) > 1 ? han[Math.floor(n / 10) - 1] : '十';
-                var g = n % 10 - 1 >= 0 ? han[n % 10 - 1] : '十';
+                var s = Math.floor(n / 10) > 1 ? han[Math.floor(n / 10) - 1]+'十' : '十';
+                var g = n % 10 - 1 >= 0 ? han[n % 10 - 1] : '';
                 return s + g;
             } else {
                 return han[n - 1];
